@@ -94,6 +94,15 @@ body{
     cursor:pointer;
     transition:.25s;
 }
+    .slideshow{
+    max-width:800px;
+    margin:20px auto;
+}
+
+.slideshow img{
+    width:100%;
+    border-radius:15px;
+}
 
 .hamburger:hover{
     transform:scale(1.12);
@@ -368,13 +377,9 @@ footer p{
 
 <div class="gallery">
 
-    <img src="images/dog1.jpg" alt="Happy Dog">
-
-    <img src="images/dog2.jpg" alt="Dog Walk">
-
-    <img src="images/dog3.jpg" alt="Pet Care">
-
-    <img src="images/dog4.jpg" alt="The Pet Spa">
+  <div class="slideshow">
+    <img id="slideImage" src="dog1.jpg">
+</div>
 
 </div>
         <h2>Testimonials</h2>
@@ -454,7 +459,7 @@ footer p{
         <div class="card">
             <strong>Do you work with puppies?</strong>
             <br><br>
-           
+           Yes, of course!
         </div>
 
         <div class="card">
@@ -514,6 +519,26 @@ function toggleMenu(){
     sidebar.classList.toggle("active");
     overlay.classList.toggle("active");
 }
+    const images = [
+    "dog1.jpg",
+    "dog2.jpg",
+    "dog3.jpg"
+];
+
+let current = 0;
+
+setInterval(() => {
+
+    current++;
+
+    if(current >= images.length){
+        current = 0;
+    }
+
+    document.getElementById("slideImage").src =
+        images[current];
+
+}, 3000);
 
 function closeMenu(){
 
