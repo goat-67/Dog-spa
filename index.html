@@ -33,6 +33,30 @@ body{
     background:var(--cream);
     color:var(--dark);
 }
+    .gallery{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(250px,1fr));
+
+    gap:20px;
+}
+
+.gallery img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+
+    border-radius:15px;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,.1);
+
+    transition:.25s;
+}
+
+.gallery img:hover{
+    transform:scale(1.03);
+}
 
 /* HEADER */
 
@@ -73,6 +97,29 @@ body{
 
 .hamburger:hover{
     transform:scale(1.12);
+}
+    .reviews{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(280px,1fr));
+
+    gap:20px;
+}
+
+.review{
+    background:white;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,.08);
+}
+
+.stars{
+    font-size:1.3rem;
+    margin-bottom:10px;
 }
 
 .hamburger div{
@@ -311,7 +358,50 @@ footer p{
             </div>
 
         </div>
+<h2>Happy Pets</h2>
 
+<div class="gallery">
+
+    <img src="images/dog1.jpg" alt="Happy Dog">
+
+    <img src="images/dog2.jpg" alt="Dog Walk">
+
+    <img src="images/dog3.jpg" alt="Pet Care">
+
+    <img src="images/dog4.jpg" alt="The Pet Spa">
+
+</div>
+        <h2>Testimonials</h2>
+
+<div class="reviews">
+
+    <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>
+            "Amazing care and very reliable!"
+        </p>
+        <strong>- Sarah M.</strong>
+    </div>
+
+    <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>
+            "My dog gets excited every time
+            they arrive."
+        </p>
+        <strong>- Michael R.</strong>
+    </div>
+
+    <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>
+            "Friendly, professional,
+            and trustworthy."
+        </p>
+        <strong>- Emily T.</strong>
+    </div>
+
+</div>
     </div>
 
     <!-- PRICING -->
