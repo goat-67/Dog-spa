@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,37 +6,58 @@
 <title>The Pet Spa</title>
 
 <style>
+
 :root{
     --orange:#ff8c42;
+    --orange-light:#ffb26b;
     --cream:#fff7ed;
     --white:#ffffff;
-    --dark:#333;
+    --dark:#333333;
 }
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+html,
+body{
+    height:100%;
 }
 
 body{
+    display:flex;
+    flex-direction:column;
     background:var(--cream);
-    min-height:100vh;
+    color:var(--dark);
 }
 
 /* HEADER */
 
-header{
-    background:linear-gradient(135deg,#ff8c42,#ffb26b);
+.site-header{
+    width:100%;
+    background:linear-gradient(
+        135deg,
+        var(--orange),
+        var(--orange-light)
+    );
     color:white;
     text-align:center;
-    padding:80px 20px;
+    padding:50px 20px;
+    box-shadow:0 3px 15px rgba(0,0,0,.12);
+    position:relative;
 }
 
 .logo{
     font-size:3rem;
     font-weight:bold;
+}
+
+.tagline{
+    margin-top:10px;
+    font-size:1rem;
 }
 
 /* HAMBURGER */
@@ -46,7 +66,7 @@ header{
     position:fixed;
     top:20px;
     right:20px;
-    z-index:1001;
+    z-index:1002;
     cursor:pointer;
     transition:.25s;
 }
@@ -63,19 +83,36 @@ header{
     border-radius:999px;
 }
 
+/* OVERLAY */
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+    z-index:998;
+}
+
+.overlay.active{
+    opacity:1;
+    visibility:visible;
+}
+
 /* SIDEBAR */
 
 .sidebar{
     position:fixed;
     top:0;
-    right:-280px;
-    width:280px;
+    right:-300px;
+    width:300px;
     height:100%;
     background:white;
-    box-shadow:-5px 0 25px rgba(0,0,0,.15);
+    box-shadow:-5px 0 20px rgba(0,0,0,.15);
     transition:.35s ease;
     z-index:1000;
-    padding-top:100px;
+    padding-top:90px;
 }
 
 .sidebar.active{
@@ -89,6 +126,7 @@ header{
     color:#333;
     font-size:1.1rem;
     cursor:pointer;
+    transition:.2s;
 }
 
 .sidebar a:hover{
@@ -96,13 +134,18 @@ header{
     color:white;
 }
 
-/* PAGES */
+/* MAIN CONTENT */
+
+main{
+    flex:1;
+    width:100%;
+}
 
 .page{
     display:none;
     max-width:1000px;
     margin:auto;
-    padding:50px 25px;
+    padding:40px 20px;
     animation:fade .3s ease;
 }
 
@@ -121,17 +164,17 @@ header{
     }
 }
 
+h2{
+    color:var(--orange);
+    margin-bottom:20px;
+}
+
 .card{
     background:white;
     padding:25px;
     border-radius:15px;
     margin-bottom:20px;
     box-shadow:0 4px 15px rgba(0,0,0,.08);
-}
-
-h2{
-    color:var(--orange);
-    margin-bottom:20px;
 }
 
 .services{
@@ -142,9 +185,15 @@ h2{
 
 .service{
     background:white;
-    padding:20px;
+    padding:25px;
     border-radius:15px;
     box-shadow:0 4px 15px rgba(0,0,0,.08);
+    text-align:center;
+    transition:.2s;
+}
+
+.service:hover{
+    transform:translateY(-4px);
 }
 
 /* FOOTER */
@@ -154,15 +203,31 @@ footer{
     color:white;
     text-align:center;
     padding:25px;
-    margin-top:50px;
+    margin-top:auto;
 }
 
 footer p{
     margin:6px 0;
 }
+
+@media(max-width:600px){
+
+    .logo{
+        font-size:2.2rem;
+    }
+
+    .sidebar{
+        width:250px;
+    }
+}
+
 </style>
 </head>
 <body>
+
+<!-- CLICK-OUTSIDE OVERLAY -->
+
+<div id="overlay" class="overlay" onclick="closeMenu()"></div>
 
 <!-- HAMBURGER -->
 
@@ -174,155 +239,200 @@ footer p{
 
 <!-- SIDEBAR -->
 
-<div class="sidebar" id="sidebar">
+<div id="sidebar" class="sidebar">
+
     <a onclick="showPage('homePage')">🏠 Home</a>
+
     <a onclick="showPage('pricingPage')">💲 Pricing</a>
+
     <a onclick="showPage('qaPage')">❓ Q & A</a>
+
     <a onclick="showPage('aboutPage')">🐾 About</a>
+
 </div>
 
-<!-- HOME PAGE -->
+<!-- GLOBAL HEADER -->
 
-<div id="homePage" class="page active">
+<header class="site-header">
 
-<header>
-    <div class="logo">🐾 The Pet Spa</div>
-    <p>Professional Pet Care With A Personal Touch</p>
+    <div class="logo">
+        🐾 The Pet Spa
+    </div>
+
+    <div class="tagline">
+        Professional Pet Care With A Personal Touch
+    </div>
+
 </header>
 
-<br>
+<!-- CONTENT -->
 
-<h2>Days Available</h2>
+<main>
 
-<div class="card">
-    Monday - Friday: 8:00 AM - 6:00 PM<br><br>
-    Saturday: 9:00 AM - 3:00 PM<br><br>
-    Sunday: Closed
-</div>
+    <!-- HOME -->
 
-<h2>What We Do</h2>
+    <div id="homePage" class="page active">
 
-<div class="card">
-    Dog Walking • Pet Sitting • Feeding Visits •
-    Exercise Sessions • Puppy Care • Vacation Visits
-</div>
+        <h2>Days Available</h2>
 
-<h2>Services</h2>
+        <div class="card">
+            Monday - Friday: 8:00 AM - 6:00 PM
+            <br><br>
+            Saturday: 9:00 AM - 3:00 PM
+            <br><br>
+            Sunday: Closed
+        </div>
 
-<div class="services">
+        <h2>What We Do</h2>
 
-    <div class="service">
-        <h3>Dog Walking</h3>
-        <p>Daily walks and exercise.</p>
+        <div class="card">
+            We provide dependable and loving care for pets.
+            From daily dog walks to pet sitting and feeding visits,
+            your pet's happiness is our priority.
+        </div>
+
+        <h2>Services</h2>
+
+        <div class="services">
+
+            <div class="service">
+                <h3>Dog Walking</h3>
+                <p>Daily exercise and outdoor adventures.</p>
+            </div>
+
+            <div class="service">
+                <h3>Pet Sitting</h3>
+                <p>Reliable care while you're away.</p>
+            </div>
+
+            <div class="service">
+                <h3>Drop-In Visits</h3>
+                <p>Feeding, water, and check-ins.</p>
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="service">
-        <h3>Pet Sitting</h3>
-        <p>Care while you're away.</p>
+    <!-- PRICING -->
+
+    <div id="pricingPage" class="page">
+
+        <h2>Pricing</h2>
+
+        <div class="card">
+            <h3>30 Minute Walk</h3>
+            <p>$20</p>
+        </div>
+
+        <div class="card">
+            <h3>60 Minute Walk</h3>
+            <p>$35</p>
+        </div>
+
+        <div class="card">
+            <h3>Drop-In Visit</h3>
+            <p>$25</p>
+        </div>
+
+        <div class="card">
+            <h3>Pet Sitting</h3>
+            <p>Contact for pricing.</p>
+        </div>
+
     </div>
 
-    <div class="service">
-        <h3>Drop-In Visits</h3>
-        <p>Feeding and quick check-ins.</p>
+    <!-- Q&A -->
+
+    <div id="qaPage" class="page">
+
+        <h2>Questions & Answers</h2>
+
+        <div class="card">
+            <strong>Do you work with puppies?</strong>
+            <br><br>
+            Yes! We love working with puppies.
+        </div>
+
+        <div class="card">
+            <strong>Can you feed pets during visits?</strong>
+            <br><br>
+            Absolutely.
+        </div>
+
+        <div class="card">
+            <strong>Do you offer weekend appointments?</strong>
+            <br><br>
+            Yes, depending on availability.
+        </div>
+
     </div>
 
-</div>
+    <!-- ABOUT -->
 
-</div>
+    <div id="aboutPage" class="page">
 
-<!-- PRICING PAGE -->
+        <h2>About The Pet Spa</h2>
 
-<div id="pricingPage" class="page">
+        <div class="card">
+            The Pet Spa was created with one goal:
+            providing safe, reliable, and loving care
+            for every pet we meet.
+            We treat every animal like family and
+            strive to make every visit enjoyable.
+        </div>
 
-<h2>Pricing</h2>
+    </div>
 
-<div class="card">
-    <h3>30 Minute Walk</h3>
-    <p>$20</p>
-</div>
-
-<div class="card">
-    <h3>60 Minute Walk</h3>
-    <p>$35</p>
-</div>
-
-<div class="card">
-    <h3>Drop-In Visit</h3>
-    <p>$25</p>
-</div>
-
-</div>
-
-<!-- ABOUT PAGE -->
-
-<div id="aboutPage" class="page">
-
-<h2>About The Pet Spa</h2>
-
-<div class="card">
-    We provide safe, loving, and dependable care for pets.
-    Every pet is treated like family and receives personal
-    attention during every visit.
-</div>
-
-</div>
-
-<!-- QA PAGE -->
-
-<div id="qaPage" class="page">
-
-<h2>Questions & Answers</h2>
-
-<div class="card">
-    <strong>Do you work with puppies?</strong><br><br>
-    Yes!
-</div>
-
-<div class="card">
-    <strong>Do you offer weekend appointments?</strong><br><br>
-    Yes, by appointment.
-</div>
-
-<div class="card">
-    <strong>Can you feed pets during visits?</strong><br><br>
-    Absolutely.
-</div>
-
-</div>
+</main>
 
 <!-- FOOTER -->
 
 <footer>
+
     <p>📞 Phone: (555) 123-4567</p>
+
     <p>💸 Venmo: @ThePetSpa</p>
+
     <p>© 2026 The Pet Spa. All Rights Reserved.</p>
+
 </footer>
 
 <script>
+
+const sidebar =
+document.getElementById("sidebar");
+
+const overlay =
+document.getElementById("overlay");
+
 function toggleMenu(){
-    document
-        .getElementById("sidebar")
-        .classList
-        .toggle("active");
+
+    sidebar.classList.toggle("active");
+    overlay.classList.toggle("active");
+}
+
+function closeMenu(){
+
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
 }
 
 function showPage(pageId){
 
-    document.querySelectorAll(".page")
+    document
+        .querySelectorAll(".page")
         .forEach(page=>{
             page.classList.remove("active");
         });
 
     document
         .getElementById(pageId)
-        .classList
-        .add("active");
+        .classList.add("active");
 
-    document
-        .getElementById("sidebar")
-        .classList
-        .remove("active");
+    closeMenu();
 }
+
 </script>
 
 </body>
