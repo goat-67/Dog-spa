@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Pet Spa</title>
+
+<style>
+:root{
+    --orange:#ff8c42;
+    --cream:#fff7ed;
+    --white:#ffffff;
+    --dark:#333333;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:var(--cream);
+    color:var(--dark);
+}
+
+/* HEADER */
+
+header{
+    background:linear-gradient(
+        135deg,
+        var(--orange),
+        #ffb26b
+    );
+    color:white;
+    text-align:center;
+    padding:80px 20px;
+    position:relative;
+}
+
+.logo{
+    font-size:3rem;
+    font-weight:bold;
+}
+
+/* HAMBURGER */
+
+.hamburger{
+    position:fixed;
+    top:20px;
+    right:20px;
+    z-index:1001;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.hamburger:hover{
+    transform:scale(1.12);
+}
+
+.hamburger div{
+    width:35px;
+    height:4px;
+    background:white;
+    margin:6px 0;
+    border-radius:50px;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    position:fixed;
+    top:0;
+    right:-300px;
+    width:300px;
+    height:100%;
+    background:white;
+    box-shadow:-4px 0 20px rgba(0,0,0,.15);
+    transition:.4s ease;
+    z-index:1000;
+    padding-top:100px;
+}
+
+.sidebar.active{
+    right:0;
+}
+
+.sidebar a{
+    display:block;
+    padding:18px 30px;
+    color:var(--dark);
+    text-decoration:none;
+    font-size:1.1rem;
+    transition:.2s;
+}
+
+.sidebar a:hover{
+    background:var(--orange);
+    color:white;
+}
+
+section{
+    max-width:1000px;
+    margin:auto;
+    padding:70px 25px;
+}
+
+h2{
+    color:var(--orange);
+    margin-bottom:20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    margin-bottom:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.service-box{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+footer{
+    background:var(--orange);
+    color:white;
+    text-align:center;
+    padding:30px;
+    margin-top:50px;
+}
+
+footer p{
+    margin:8px 0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MENU BUTTON -->
+
+<div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar" id="sidebar">
+    <a href="#pricing">Pricing</a>
+    <a href="#qa">Q & A</a>
+    <a href="#about">About</a>
+</div>
+
+<!-- HEADER -->
+
+<header>
+    <h1 class="logo">🐾 The Pet Spa</h1>
+    <p>Professional Dog Walking & Pet Care</p>
+</header>
+
+<!-- DAYS AVAILABLE -->
+
+<section>
+    <h2>Days Available</h2>
+
+    <div class="card">
+        <p>
+            Monday - Friday: 8:00 AM - 6:00 PM
+            <br><br>
+            Saturday: 9:00 AM - 3:00 PM
+            <br><br>
+            Sunday: Closed
+        </p>
+    </div>
+</section>
+
+<!-- WHAT WE DO -->
+
+<section>
+    <h2>What We Do</h2>
+
+    <div class="card">
+        We provide caring, reliable pet services including
+        dog walking, pet sitting, feeding visits,
+        exercise sessions, and lots of love for your pets.
+    </div>
+</section>
+
+<!-- SERVICES -->
+
+<section>
+    <h2>Services</h2>
+
+    <div class="services">
+
+        <div class="service-box">
+            <h3>Dog Walking</h3>
+            <p>Daily walks and exercise.</p>
+        </div>
+
+        <div class="service-box">
+            <h3>Pet Sitting</h3>
+            <p>Care while you're away.</p>
+        </div>
+
+        <div class="service-box">
+            <h3>Drop-In Visits</h3>
+            <p>Quick checkups and feeding.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- PRICING -->
+
+<section id="pricing">
+    <h2>Pricing</h2>
+
+    <div class="card">
+        30 Minute Walk — $20
+        <br><br>
+        60 Minute Walk — $35
+        <br><br>
+        Pet Sitting — Contact for Quote
+    </div>
+</section>
+
+<!-- Q&A -->
+
+<section id="qa">
+    <h2>Q & A</h2>
+
+    <div class="card">
+        <strong>Do you work with puppies?</strong>
+        <br>
+        Yes!
+    </div>
+
+    <div class="card">
+        <strong>Can you feed pets?</strong>
+        <br>
+        Absolutely.
+    </div>
+
+    <div class="card">
+        <strong>Do you offer weekend visits?</strong>
+        <br>
+        Yes, by appointment.
+    </div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+    <h2>About Us</h2>
+
+    <div class="card">
+        The Pet Spa is dedicated to providing safe,
+        reliable, and loving care for your pets.
+        We treat every animal like family.
+    </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+    <p>📞 Phone: (555) 123-4567</p>
+    <p>💸 Venmo: @ThePetSpa</p>
+    <p>© 2026 The Pet Spa. All Rights Reserved.</p>
+</footer>
+
+<script>
+function toggleMenu(){
+    document
+        .getElementById("sidebar")
+        .classList
+        .toggle("active");
+}
+</script>
+
+</body>
+</html>
