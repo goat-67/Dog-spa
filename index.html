@@ -58,6 +58,10 @@ body{
 .gallery img:hover{
     transform:scale(1.03);
 }
+    #pricingPage h3{
+    color:var(--orange);
+    margin:25px 0 10px;
+}
 
 /* HEADER */
 
@@ -271,10 +275,10 @@ footer{
     padding:25px;
     margin-top:auto;
 }
-   .buildsite{
-   
-    bottom:10px;
-    left:10px;
+  .buildsite{
+    margin-top:15px;
+    font-size:.9rem;
+    opacity:.9;
 }
 
 footer p{
@@ -312,13 +316,13 @@ footer p{
 
 <div id="sidebar" class="sidebar">
 
-    <a onclick="showPage('homePage')"> Home</a>
+    <a onclick="showPage('homePage')">🏠 Home</a>
 
     <a onclick="showPage('pricingPage')">💲 Pricing</a>
 
     <a onclick="showPage('qaPage')">❓ Q & A</a>
 
-    <a onclick="showPage('aboutPage')">🐾 About</a>
+    <a onclick="showPage('aboutPage')">🐾 About Us</a>
 
 </div>
 
@@ -432,6 +436,7 @@ footer p{
     <div id="pricingPage" class="page">
 
         <h2>Pricing</h2>
+        <h3> Dog Walking</h3>
  <div class="card">
             <h3>15 Minute Walk</h3>
             <p>$4</p>
@@ -445,10 +450,8 @@ footer p{
             <h3>60 Minute Walk</h3>
             <p>$25</p>
         </div>
- <div class="card">
-            <h3>Weekly Poop Scooping </h3>
-            <p>$5 a time</p>
-        </div>
+            <h3> Pet Services</h3>
+
         <div class="card">
             <h3> Premium Bathing</h3>
             <p>$10</p>
@@ -461,6 +464,11 @@ footer p{
         <div class="card">
             <h3> Supervised playtime & freetime</h3>
             <p>$3</p>
+        </div>
+          <h3> Yard Services</h3>
+         <div class="card">
+            <h3>Weekly Poop Scooping </h3>
+            <p>$5 a time</p>
         </div>
 
     </div>
